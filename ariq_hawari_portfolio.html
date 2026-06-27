@@ -1,0 +1,641 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .portfolio {
+    background: #0d0f14;
+    color: #e8eaf0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .nav-logo { font-size: 13px; font-weight: 500; color: #7c9cff; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a {
+    font-size: 12px;
+    color: rgba(232,234,240,0.55);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .nav-links a:hover { color: #e8eaf0; }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 2.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,120,255,0.07) 0%, transparent 70%);
+    top: -100px; right: -150px;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99,120,255,0.1);
+    border: 0.5px solid rgba(99,120,255,0.3);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: #7c9cff;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .dot-live { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse-dot 2s infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: #f0f2f8;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: normal; color: #7c9cff; }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(232,234,240,0.55);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: #7c9cff;
+    color: #0d0f14;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: #9db5ff; }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(232,234,240,0.7);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #e8eaf0; }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid rgba(255,255,255,0.07);
+  }
+  .stat-item { }
+  .stat-num { font-size: 22px; font-weight: 500; color: #f0f2f8; }
+  .stat-label { font-size: 11px; color: rgba(232,234,240,0.4); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+  /* SECTION COMMON */
+  section { padding: 5rem 2.5rem; }
+  .section-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c9cff;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 300;
+    color: #f0f2f8;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-divider {
+    border: none;
+    border-top: 0.5px solid rgba(255,255,255,0.07);
+    margin-bottom: 3rem;
+  }
+
+  /* STORY / JOURNEY */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .story-aside { }
+  .story-aside-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(232,234,240,0.35); margin-bottom: 1rem; }
+  .story-timeline { position: relative; }
+  .timeline-item { display: flex; gap: 16px; margin-bottom: 2rem; position: relative; }
+  .timeline-left { display: flex; flex-direction: column; align-items: center; }
+  .timeline-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #7c9cff;
+    flex-shrink: 0; margin-top: 5px;
+  }
+  .timeline-dot.dim { background: rgba(124,156,255,0.3); }
+  .timeline-line { width: 1px; background: rgba(255,255,255,0.07); flex: 1; margin-top: 4px; }
+  .timeline-body { }
+  .timeline-year { font-size: 11px; color: rgba(232,234,240,0.35); letter-spacing: 0.04em; margin-bottom: 3px; }
+  .timeline-role { font-size: 14px; font-weight: 500; color: #e8eaf0; }
+  .timeline-org { font-size: 13px; color: #7c9cff; margin-bottom: 4px; }
+  .timeline-desc { font-size: 13px; color: rgba(232,234,240,0.5); line-height: 1.6; }
+
+  .story-text { }
+  .story-paragraph { font-size: 16px; color: rgba(232,234,240,0.75); line-height: 1.8; margin-bottom: 1.5rem; }
+  .story-paragraph strong { color: #e8eaf0; font-weight: 500; }
+  .story-highlight {
+    border-left: 2px solid #7c9cff;
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    font-size: 17px;
+    color: rgba(232,234,240,0.85);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* SKILLS */
+  .skills-bg { background: #10121a; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; }
+  .skill-cat {
+    background: #10121a;
+    padding: 2rem;
+  }
+  .skill-cat-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(232,234,240,0.35); margin-bottom: 1.5rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: rgba(232,234,240,0.7);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { background: rgba(124,156,255,0.1); border-color: rgba(124,156,255,0.3); color: #7c9cff; }
+  .skill-tag.highlight { background: rgba(124,156,255,0.08); border-color: rgba(124,156,255,0.25); color: #a0b8ff; }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; }
+  .project-card {
+    background: #0d0f14;
+    padding: 2rem 2.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .project-card:hover { background: #13151d; }
+  .project-card.active { background: #13151d; }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .project-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .badge-dissertation { background: rgba(124,156,255,0.12); color: #7c9cff; border: 0.5px solid rgba(124,156,255,0.25); }
+  .badge-corporate { background: rgba(74,222,128,0.08); color: #4ade80; border: 0.5px solid rgba(74,222,128,0.2); }
+  .badge-analytics { background: rgba(251,191,36,0.08); color: #fbbf24; border: 0.5px solid rgba(251,191,36,0.2); }
+  .project-year { font-size: 12px; color: rgba(232,234,240,0.3); }
+  .project-title { font-size: 17px; font-weight: 500; color: #f0f2f8; margin-bottom: 6px; }
+  .project-subtitle { font-size: 13px; color: rgba(232,234,240,0.45); }
+  .project-expand-icon { font-size: 18px; color: rgba(232,234,240,0.25); transition: transform 0.3s; flex-shrink: 0; margin-top: 4px; }
+  .project-card.active .project-expand-icon { transform: rotate(45deg); color: #7c9cff; }
+
+  .project-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .project-card.active .project-detail { max-height: 500px; }
+  .project-detail-inner {
+    padding: 1.5rem 0 0.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .detail-col-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(232,234,240,0.3); margin-bottom: 8px; }
+  .detail-col p { font-size: 13px; color: rgba(232,234,240,0.6); line-height: 1.6; }
+  .detail-col strong { color: rgba(232,234,240,0.85); font-weight: 500; }
+
+  /* CONTACT */
+  .contact-section { background: #10121a; }
+  .contact-inner { max-width: 560px; }
+  .contact-inner .section-title { margin-bottom: 0.75rem; }
+  .contact-sub { font-size: 15px; color: rgba(232,234,240,0.5); margin-bottom: 2.5rem; line-height: 1.7; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: rgba(232,234,240,0.7);
+    font-size: 14px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .contact-link:hover { background: rgba(124,156,255,0.06); border-color: rgba(124,156,255,0.2); color: #e8eaf0; }
+  .contact-link i { font-size: 18px; color: #7c9cff; }
+  .contact-link-label { font-size: 11px; color: rgba(232,234,240,0.3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+  .footer {
+    padding: 2rem 2.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(232,234,240,0.25);
+  }
+</style>
+
+<div class="portfolio">
+
+  <nav class="nav">
+    <span class="nav-logo">ARIQ HAWARI</span>
+    <div class="nav-links">
+      <a onclick="scrollTo('story')">Story</a>
+      <a onclick="scrollTo('skills')">Skills</a>
+      <a onclick="scrollTo('projects')">Projects</a>
+      <a onclick="scrollTo('contact')">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg-orb"></div>
+    <div class="hero-tag">
+      <span class="dot-live"></span>
+      Open to opportunities
+    </div>
+    <h1>I turn messy data into<br><em>decisions people trust.</em></h1>
+    <p class="hero-sub">Data analyst with a Distinction from Manchester and 2+ years at Telkom Indonesia & Mitratel — bridging the gap between advanced models and real business impact.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" onclick="scrollTo('projects')">
+        <i class="ti ti-chart-bar" aria-hidden="true"></i>
+        View my work
+      </a>
+      <a class="btn-ghost" onclick="scrollTo('contact')">
+        <i class="ti ti-mail" aria-hidden="true"></i>
+        Get in touch
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Users segmented</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Distinction</div>
+        <div class="stat-label">MSc Manchester</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Projects shipped</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <p class="section-tag">Background</p>
+    <h2 class="section-title">The journey so far</h2>
+    <hr class="section-divider">
+    <div class="story-grid">
+      <div class="story-aside">
+        <p class="story-aside-label">Timeline</p>
+        <div class="story-timeline">
+          <div class="timeline-item">
+            <div class="timeline-left">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-year">2024 – 2025</div>
+              <div class="timeline-role">MSc Business Analytics</div>
+              <div class="timeline-org">University of Manchester</div>
+              <div class="timeline-desc">Distinction — dissertation on AI-driven dynamic pricing</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-left">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-year">2023 – 2024</div>
+              <div class="timeline-role">Marketing & Strategy Analyst</div>
+              <div class="timeline-org">Mitratel</div>
+              <div class="timeline-desc">Competitive analysis and market data strategy</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-left">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-year">2022 – 2023</div>
+              <div class="timeline-role">Data Analyst</div>
+              <div class="timeline-org">Telkom Indonesia</div>
+              <div class="timeline-desc">RFM segmentation for 10K+ users</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-left">
+              <div class="timeline-dot dim"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-year">2017 – 2022</div>
+              <div class="timeline-role">BSc Mechanical Engineering</div>
+              <div class="timeline-org">Universitas Indonesia</div>
+              <div class="timeline-desc">GPA 3.15 — foundation in analytical problem-solving</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-text">
+        <p class="story-paragraph">
+          I started out as a mechanical engineer — someone trained to see the world as systems of forces, variables, and constraints. That mindset never left me. It just found a new home in data.
+        </p>
+        <p class="story-paragraph">
+          At <strong>Telkom Indonesia</strong>, I quickly realized that data wasn't just a reporting tool — it was a strategic asset that most teams weren't fully utilizing. I built RFM segmentation models for 10,000+ users not because it was assigned to me, but because I saw an opportunity that hadn't been acted on yet.
+        </p>
+        <div class="story-highlight">
+          "Numbers don't lie, but they don't tell the whole story on their own. My job is to ask the right questions first."
+        </div>
+        <p class="story-paragraph">
+          At <strong>Mitratel</strong>, I moved upstream — closer to the decisions being made in boardrooms. That's where I developed a sharp appreciation for how data needs to be translated differently depending on your audience: an exec wants clarity, a marketer wants levers to pull.
+        </p>
+        <p class="story-paragraph">
+          My MSc at <strong>Manchester</strong> let me go deeper technically. My dissertation tackled a real tension in the Premier League — rising ticket prices alienating fans — by building a multi-objective optimization model that mathematically balanced revenue against fan affordability. It's the kind of problem I love: messy, human, and genuinely important.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-bg">
+    <p class="section-tag">Capabilities</p>
+    <h2 class="section-title">What I bring to the table</h2>
+    <hr class="section-divider">
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="skill-cat-title">Programming & databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Python</span>
+          <span class="skill-tag highlight">SQL</span>
+          <span class="skill-tag">Google BigQuery</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Visualization & BI</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Tableau</span>
+          <span class="skill-tag highlight">Power BI</span>
+          <span class="skill-tag">Looker Studio</span>
+          <span class="skill-tag">Metabase</span>
+          <span class="skill-tag">Apache Superset</span>
+          <span class="skill-tag">GA4</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Advanced analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Predictive modelling</span>
+          <span class="skill-tag highlight">Customer segmentation</span>
+          <span class="skill-tag">A/B testing</span>
+          <span class="skill-tag">Multi-objective optimization</span>
+          <span class="skill-tag">EDA</span>
+          <span class="skill-tag">Feature engineering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-tag">Work</p>
+    <h2 class="section-title">Selected projects</h2>
+    <hr class="section-divider">
+    <div class="projects-list" id="proj-list">
+
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge badge-dissertation">Dissertation</span>
+              <span class="project-year">2024–2025</span>
+            </div>
+            <div class="project-title">AI-driven dynamic ticket pricing for the EPL</div>
+            <div class="project-subtitle">Multi-objective optimization · Predictive modelling · Pareto frontier analysis</div>
+          </div>
+          <i class="ti ti-plus project-expand-icon" aria-hidden="true"></i>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="detail-col">
+              <div class="detail-col-title">The problem</div>
+              <p>Premier League clubs face a real tension — maximize revenue while keeping tickets affordable for loyal fans. No existing framework solved both simultaneously.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">What I built</div>
+              <p>A <strong>three-stage pipeline</strong>: demand forecasting (RMSE-optimized), multi-objective optimization with fan-fairness constraints, and Pareto frontier mapping for the Big Six clubs.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">The outcome</div>
+              <p>Delivered a tool that <strong>empowers club executives</strong> to select a pricing policy that balances commercial growth with fanbase accessibility — not a guess, a math-backed decision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge badge-corporate">Corporate</span>
+              <span class="project-year">2023–2024</span>
+            </div>
+            <div class="project-title">Executive KPI & GA4 funneling dashboards</div>
+            <div class="project-subtitle">SQL · Metabase · Superset · Looker Studio · Google Analytics 4</div>
+          </div>
+          <i class="ti ti-plus project-expand-icon" aria-hidden="true"></i>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="detail-col">
+              <div class="detail-col-title">The problem</div>
+              <p>Two teams, two completely different needs — executives needed a high-level operational view; marketers needed granular user journey tracking. One dashboard couldn't serve both.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">What I built</div>
+              <p>End-to-end automated dashboards pulling from <strong>internal SQL databases and GA4</strong>, built separately for each audience in Metabase and Superset.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">The outcome</div>
+              <p>Significantly faster decision-making for leadership. Marketing team gained visibility into funnel drop-offs they'd never been able to pinpoint before.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge badge-corporate">Corporate</span>
+              <span class="project-year">2022–2023</span>
+            </div>
+            <div class="project-title">RFM customer segmentation — Telkom MyIndibiz</div>
+            <div class="project-subtitle">SQL · Python · EDA · Customer profiling · Strategic reporting</div>
+          </div>
+          <i class="ti ti-plus project-expand-icon" aria-hidden="true"></i>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="detail-col">
+              <div class="detail-col-title">The problem</div>
+              <p>The MyIndibiz team was running one-size-fits-all campaigns on 10,000+ users. Without segmentation, budget was being wasted on the wrong customers.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">What I built</div>
+              <p>A custom <strong>RFM model</strong> tailored to Telkom's subscription logic — not a generic template, but one that accounted for how B2B customers actually buy.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">The outcome</div>
+              <p>Delivered a Proof of Concept with full analytical deck — segmenting users into hibernating, loyal, at-risk, and potential loyalist cohorts to drive targeted campaigns.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge badge-analytics">Analytics</span>
+              <span class="project-year">2022</span>
+            </div>
+            <div class="project-title">A/B testing & promotion strategy optimization</div>
+            <div class="project-subtitle">EDA · T-test · Hypothesis testing · Statistical analysis</div>
+          </div>
+          <i class="ti ti-plus project-expand-icon" aria-hidden="true"></i>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="detail-col">
+              <div class="detail-col-title">The problem</div>
+              <p>A fast-food chain ran three different promotional campaigns across randomized locations — but had no rigorous way to determine which actually drove sales.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">What I built</div>
+              <p>A full <strong>hypothesis testing framework</strong> — EDA to surface trends, T-tests to validate significance, and regression analysis to identify the true drivers.</p>
+            </div>
+            <div class="detail-col">
+              <div class="detail-col-title">The outcome</div>
+              <p>Statistically proved Promotions 1 and 3 significantly outperformed Promotion 2. Disproved the assumption that store age affected sales — saving future budget from a false hypothesis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <p class="section-tag">Let's connect</p>
+    <h2 class="section-title">Ready to build something together?</h2>
+    <hr class="section-divider">
+    <div class="contact-inner">
+      <p class="contact-sub">I'm actively looking for data analyst, business analyst, or data scientist roles where I can bring both technical depth and clear business thinking. If that sounds like a fit — let's talk.</p>
+      <div class="contact-links">
+        <div class="contact-link">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <div>
+            <div class="contact-link-label">Email</div>
+            hawariariq@gmail.com
+          </div>
+        </div>
+        <div class="contact-link">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            linkedin.com/in/ariqhawari
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Muhammad Ariq Hawari — Data Analyst</span>
+    <span>Built to tell a story, not just list credentials</span>
+  </footer>
+
+</div>
+
+<script>
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleProject(card) {
+  const wasActive = card.classList.contains('active');
+  document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
+  if (!wasActive) card.classList.add('active');
+}
+</script>
