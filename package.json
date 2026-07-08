@@ -1,0 +1,22 @@
+{
+  "name": "ariq-portfolio-website",
+  "version": "1.0.0",
+  "description": "Data Analytics Portfolio for Muhammad Ariq Hawari",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariqhawari04/ariq-portfolio-website.git"
+  },
+  "keywords": [
+    "portfolio",
+    "data-analytics"
+  ],
+  "author": "Muhammad Ariq Hawari",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
