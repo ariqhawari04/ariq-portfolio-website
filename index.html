@@ -853,7 +853,10 @@ section{padding:4.5rem 2.5rem}
 
 <!-- Vercel Analytics & Speed Insights -->
 <!-- Web Analytics: Tracks page views and user interactions -->
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 
 <!-- Speed Insights: Monitors site performance metrics -->
 <script type="module">
