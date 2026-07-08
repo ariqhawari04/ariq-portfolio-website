@@ -851,15 +851,14 @@ section{padding:4.5rem 2.5rem}
 
 </style>
 
-<!-- Vercel Analytics & Speed Insights (NPM Module Import) -->
+<!-- Vercel Analytics & Speed Insights -->
+<!-- Web Analytics: Tracks page views and user interactions -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+<!-- Speed Insights: Monitors site performance metrics -->
 <script type="module">
-  // 1. Speed Insights (from @vercel/speed-insights)
   import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights';
   injectSpeedInsights();
-
-  // 2. Web Analytics (from @vercel/analytics)
-  import { inject } from 'https://esm.sh/@vercel/analytics';
-  inject();
 </script>
 
 </head>
